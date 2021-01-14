@@ -29,3 +29,7 @@ It is my first React project, so this is a metalearning project of some sort :jo
 ## How to use it
 
 Still on development, so TBD
+
+### Credits
+
+Yamaha Montage and Yamaha MODX are products licensed by [Yahama](https://www.yamaha.com/)
