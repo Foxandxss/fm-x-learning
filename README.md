@@ -1,90 +1,31 @@
-# FmXLearning
+# FM-X - Learning
 
-This project was generated using [Nx](https://nx.dev).
+FM-X is a FM (Frequency Modulation) synthesizer engine built-in in the Yamaha Montage and MODX.
 
-<p align="center"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="450"></p>
+I believe that the best way of learning how to use any synthesizer is by replicating a sound step by step, to see, or better said, hear, what changes are being applied at any step.
 
-🔎 **Nx is a set of Extensible Dev Tools for Monorepos.**
+There is no easy way to do this with the hardware, other than manually writting down a hundred of different values and then applying them back one by one.
 
-## Adding capabilities to your workspace
+## What is this project?
 
-Nx supports many plugins which add capabilities for developing different types of applications and different tools.
+This projects aims to be a database of patches that can be seen visually as close as possible with the hardware.
 
-These capabilities include generating applications, libraries, etc as well as the devtools to test, and build projects as well.
+While new patches needs to be entered by hand, the interface will provide default values that will speed up the process.
 
-Below are our core plugins:
+Once a patch is created, a unique url will be give so a person can open the patch in the browser and use it as a guide to replicate it on their hardware.
 
-- [React](https://reactjs.org)
-  - `npm install --save-dev @nrwl/react`
-- Web (no framework frontends)
-  - `npm install --save-dev @nrwl/web`
-- [Angular](https://angular.io)
-  - `npm install --save-dev @nrwl/angular`
-- [Nest](https://nestjs.com)
-  - `npm install --save-dev @nrwl/nest`
-- [Express](https://expressjs.com)
-  - `npm install --save-dev @nrwl/express`
-- [Node](https://nodejs.org)
-  - `npm install --save-dev @nrwl/node`
+## What is NOT this project?
 
-There are also many [community plugins](https://nx.dev/nx-community) you could add.
+This project is not a FM-X synthesizer. There is no implementation of this engine outside Montage/MODX.
 
-## Generate an application
+This project can't apply the patches directly to the hardware like SoundMondo. It is a read only patch meant for learning.
 
-Run `nx g @nrwl/react:app my-app` to generate an application.
+## Technology behind this project
 
-> You can use any of the plugins above to generate applications as well.
+This project is created with [NX](https://nx.dev/) using [React](https://reactjs.org/), [Nest.js](https://nestjs.com/) and [GraphQL](https://graphql.org/).
 
-When using Nx, you can create multiple applications and libraries in the same workspace.
+It is my first React project, so this is a metalearning project of some sort :joy:
 
-## Generate a library
+## How to use it
 
-Run `nx g @nrwl/react:lib my-lib` to generate a library.
-
-> You can also use any of the plugins above to generate libraries as well.
-
-Libraries are sharable across libraries and applications. They can be imported from `@fm-x-learning/mylib`.
-
-## Development server
-
-Run `nx serve my-app` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `nx g @nrwl/react:component my-component --project=my-app` to generate a new component.
-
-## Build
-
-Run `nx build my-app` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `nx test my-app` to execute the unit tests via [Jest](https://jestjs.io).
-
-Run `nx affected:test` to execute the unit tests affected by a change.
-
-## Running end-to-end tests
-
-Run `ng e2e my-app` to execute the end-to-end tests via [Cypress](https://www.cypress.io).
-
-Run `nx affected:e2e` to execute the end-to-end tests affected by a change.
-
-## Understand your workspace
-
-Run `nx dep-graph` to see a diagram of the dependencies of your projects.
-
-## Further help
-
-Visit the [Nx Documentation](https://nx.dev) to learn more.
-
-## ☁ Nx Cloud
-
-### Computation Memoization in the Cloud
-
-<p align="center"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-cloud-card.png"></p>
-
-Nx Cloud pairs with Nx in order to enable you to build and test code more rapidly, by up to 10 times. Even teams that are new to Nx can connect to Nx Cloud and start saving time instantly.
-
-Teams using Nx gain the advantage of building full-stack applications with their preferred framework alongside Nx’s advanced code generation and project dependency graph, plus a unified experience for both frontend and backend developers.
-
-Visit [Nx Cloud](https://nx.app/) to learn more.
+Still on development, so TBD
