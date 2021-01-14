@@ -32,4 +32,4 @@ Still on development, so TBD
 
 ### Credits
 
-Yamaha Montage and Yamaha MODX are products licensed by [Yahama](https://www.yamaha.com/)
+Yamaha Montage and Yamaha MODX are products licensed by [Yamaha](https://www.yamaha.com/)
