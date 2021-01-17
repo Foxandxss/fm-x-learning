@@ -35,6 +35,7 @@
     "@nestjs/core": "^7.0.0",
     "@nestjs/platform-express": "^7.0.0",
     "@nestjs/typeorm": "^7.1.5",
+    "class-validator": "^0.13.1",
     "core-js": "^3.6.5",
     "document-register-element": "1.13.1",
     "pg": "^8.5.1",
@@ -43,7 +44,8 @@
     "reflect-metadata": "^0.1.13",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",
-    "typeorm": "^0.2.30"
+    "typeorm": "^0.2.30",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@babel/core": "7.9.6",
@@ -69,6 +71,7 @@
     "@types/node": "12.12.38",
     "@types/react": "16.9.56",
     "@types/react-dom": "16.9.9",
+    "@types/uuid": "^8.3.0",
     "@typescript-eslint/eslint-plugin": "4.3.0",
     "@typescript-eslint/parser": "4.3.0",
     "babel-jest": "26.2.2",

@@ -2,6 +2,10 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import * as Joi from '@hapi/joi';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { Patch } from '../fmx/entities/patch.entity';
+import { Part } from '../fmx/entities/part.entity';
+import { CommonGeneral } from '../fmx/entities/common-general.entity';
+import { FmxModule } from '../fmx/fmx.module';
 
 @Module({
   imports: [
@@ -26,10 +30,11 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
       synchronize: process.env.NODE_ENV !== 'prod',
-      // logging:
-      //   process.env.NODE_ENV !== 'prod' && process.env.NODE_ENV !== 'test',
-      entities: [],
+      logging:
+        process.env.NODE_ENV !== 'prod' && process.env.NODE_ENV !== 'test',
+      entities: [Patch, Part, CommonGeneral],
     }),
+    FmxModule,
   ],
 })
 export class AppModule {}
