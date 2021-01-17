@@ -21,16 +21,26 @@ export class FmxService {
       patch.slug = uuid();
 
       const part = this.partRepository.create();
+      const part2 = this.partRepository.create();
 
       const commonGeneral = this.cgRepository.create();
 
-      commonGeneral.part = part;
-      part.patch = patch;
+      // commonGeneral.part = part;
+      // part.patch = patch;
+      patch.parts = [part];
+      part.commonGeneral = commonGeneral;
+
+      await this.patchRepository.save(patch);
+
+      patch.parts.push(part2);
 
       await this.patchRepository.save(patch);
       // await this.cgRepository.save(commonGeneral);
+
+      return true;
     } catch (e) {
       console.error(e);
+      return false;
     }
   }
 }
