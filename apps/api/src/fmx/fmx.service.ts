@@ -1,18 +1,15 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
-import { CommonGeneral } from './entities/common-general.entity';
-import { Part } from './entities/part.entity';
+import { MongoRepository } from 'typeorm';
 import { Patch } from './entities/patch.entity';
 import { v4 as uuid } from 'uuid';
+import { Part } from './entities/part.entity';
+import { CommonGeneral } from './entities/common-general.entity';
 
 @Injectable()
 export class FmxService {
   constructor(
-    @InjectRepository(Patch) private patchRepository: Repository<Patch>,
-    @InjectRepository(Part) private partRepository: Repository<Part>,
-    @InjectRepository(CommonGeneral)
-    private cgRepository: Repository<CommonGeneral>
+    @InjectRepository(Patch) private patchRepository: MongoRepository<Patch>
   ) {}
 
   async createPatch() {
@@ -20,22 +17,11 @@ export class FmxService {
       const patch = this.patchRepository.create();
       patch.slug = uuid();
 
-      const part = this.partRepository.create();
-      const part2 = this.partRepository.create();
+      const part = new Part();
+      part.commonGeneral = new CommonGeneral();
+      patch.parts.push(part);
 
-      const commonGeneral = this.cgRepository.create();
-
-      // commonGeneral.part = part;
-      // part.patch = patch;
-      patch.parts = [part];
-      part.commonGeneral = commonGeneral;
-
-      await this.patchRepository.save(patch);
-
-      patch.parts.push(part2);
-
-      await this.patchRepository.save(patch);
-      // await this.cgRepository.save(commonGeneral);
+      console.log(JSON.stringify(patch));
 
       return true;
     } catch (e) {

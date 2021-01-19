@@ -1,10 +1,8 @@
-import { Field, Int, ObjectType, registerEnumType } from '@nestjs/graphql';
+import { Field, Int, registerEnumType } from '@nestjs/graphql';
 import { IsEnum, IsInt, IsString, Max, Min } from 'class-validator';
-import { Column, Entity, JoinColumn, OneToOne } from 'typeorm';
+import { Column } from 'typeorm';
 import { MidiRange } from '../../common/decorators';
-import { CoreEntity } from '../../common/entities/core.entity';
 import { OnOff } from '../../common/enums';
-import { Part } from './part.entity';
 
 enum Polyphony {
   Mono = 'mono',
@@ -19,111 +17,101 @@ enum KeyAssign {
 registerEnumType(Polyphony, { name: 'Polyphony' });
 registerEnumType(KeyAssign, { name: 'KeyAssign' });
 
-@ObjectType()
-@Entity()
-export class CommonGeneral extends CoreEntity {
-  @Field(type => Part)
-  @OneToOne(type => Part, {
-    // cascade: true,
-    onDelete: 'CASCADE',
-  })
-  @JoinColumn()
-  part: Part;
-
+export class CommonGeneral {
   @Field(type => Int)
-  @Column({ default: 100 })
+  @Column()
   @MidiRange()
-  volume: number;
+  volume = 100;
 
   @Field(type => String)
-  @Column({ default: 'C' })
+  @Column()
   @IsString()
-  pan: string;
+  pan = 'C';
 
   @Field(type => Int)
-  @Column({ default: 127 })
+  @Column()
   @MidiRange()
-  dryLevel: number;
+  dryLevel = 127;
 
   @Field(type => Int)
-  @Column({ default: 0 })
+  @Column()
   @MidiRange()
-  varSend: number;
+  varSend = 0;
 
   @Field(type => Int)
-  @Column({ default: 12 })
+  @Column()
   @MidiRange()
-  revSend: number;
+  revSend = 12;
 
   @Field(type => Polyphony)
-  @Column({ type: 'enum', enum: Polyphony, default: Polyphony.Poly })
+  @Column({ type: 'enum', enum: Polyphony })
   @IsEnum(Polyphony)
-  polyphony: Polyphony;
+  polyphony = Polyphony.Poly;
 
   @Field(type => KeyAssign)
-  @Column({ type: 'enum', enum: KeyAssign, default: KeyAssign.Multi })
+  @Column({ type: 'enum', enum: KeyAssign })
   @IsEnum(KeyAssign)
-  keyAssign: KeyAssign;
+  keyAssign = KeyAssign.Multi;
 
   @Field(type => OnOff)
-  @Column({ type: 'enum', enum: OnOff, default: OnOff.Off })
+  @Column({ type: 'enum', enum: OnOff })
   @IsEnum(OnOff)
-  keyOnDlySync: OnOff;
+  keyOnDlySync = OnOff.Off;
 
   @Field(type => Int)
-  @Column({ default: 0 })
+  @Column()
   @MidiRange()
-  delayLength: number;
+  delayLength = 0;
 
   @Field(type => OnOff)
-  @Column({ type: 'enum', enum: OnOff, default: OnOff.Off })
+  @Column({ type: 'enum', enum: OnOff })
   @IsEnum(OnOff)
-  arpPlayOnly: OnOff;
+  arpPlayOnly = OnOff.Off;
 
   @Field(type => Int)
-  @Column({ default: 0 })
+  @Column()
   @MidiRange()
-  randomPan: number;
+  randomPan = 0;
 
   @Field(type => String)
-  @Column({ default: 'C' })
+  @Column()
   @IsString()
-  alternatePan: string;
+  alternatePan = 'C';
 
   @Field(type => Int)
-  @Column({ default: 0 })
+  @Column()
   @Min(-64)
   @Max(63)
   @IsInt()
-  scanlingPan: number;
+  scanlingPan = 0;
 
   @Field(type => Int)
-  @Column({ default: 1 })
+  @Column()
   @MidiRange({ min: 1 })
-  velocityLimitLower: number;
+  velocityLimitLower = 1;
 
   @Field(type => Int)
-  @Column({ default: 127 })
+  @Column()
   @MidiRange({ min: 1 })
-  velocityLimitUpper: number;
+  velocityLimitUpper = 127;
 
   @Field(type => String)
-  @Column({ default: 'C -2' })
+  @Column()
   @IsString()
-  noteLimitLower: string;
+  noteLimitLower = 'C -2';
 
   @Field(type => String)
-  @Column({ default: 'G 8' })
+  @Column()
   @IsString()
-  noteLimitUpper: string;
+  noteLimitUpper = 'G 8';
 
   @Field(type => Int)
-  @Column({ default: 64 })
+  @Column()
   @MidiRange()
-  velocityOffset: number;
+  velocityOffset = 64;
 
   @Field(type => Int)
-  @Column({ default: 64 })
+  @Column()
   @MidiRange()
-  velocityDepth: number;
+  velocityDepth = 64;
 }
