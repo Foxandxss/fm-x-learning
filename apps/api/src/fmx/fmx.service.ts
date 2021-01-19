@@ -23,6 +23,8 @@ export class FmxService {
 
       console.log(JSON.stringify(patch));
 
+      this.patchRepository.save(patch);
+
       return true;
     } catch (e) {
       console.error(e);

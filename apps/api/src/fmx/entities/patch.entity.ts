@@ -9,11 +9,9 @@ export class Patch {
   id: ObjectID;
 
   @Field(type => String)
-  @Column()
   @IsString()
   slug: string;
 
   @Field(type => [Part])
-  @Column(type => Part)
   parts: Part[] = [];
 }
