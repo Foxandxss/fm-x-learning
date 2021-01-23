@@ -1,6 +1,7 @@
-import { Field, Int } from '@nestjs/graphql';
+import { Field, Int, ObjectType } from '@nestjs/graphql';
 import { IsInt, Max, Min } from 'class-validator';
 
+@ObjectType()
 export class CommonAlgorithm {
   @Field(type => Int)
   @Min(1)

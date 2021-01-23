@@ -1,8 +1,9 @@
-import { Field, Int } from '@nestjs/graphql';
+import { Field, Int, ObjectType } from '@nestjs/graphql';
 import { ValidateNested } from 'class-validator';
 import { OperatorForm } from './operator-form.entity';
 import { OperatorLevel } from './operator-level.entity';
 
+@ObjectType()
 export class Operator {
   @Field(type => Int)
   operatorNum: number;

@@ -5,6 +5,7 @@ import { Patch } from './entities/patch.entity';
 import { v4 as uuid } from 'uuid';
 import { Part } from './entities/part.entity';
 import { validateOrReject, ValidationError } from 'class-validator';
+import { CreatePatchInput, CreatePatchOutput } from './dtos/create-patch.dto';
 
 @Injectable()
 export class FmxService {
@@ -12,27 +13,33 @@ export class FmxService {
     @InjectRepository(Patch) private patchRepository: MongoRepository<Patch>
   ) {}
 
-  async createPatch() {
+  async createPatch({
+    numOfParts,
+  }: CreatePatchInput): Promise<CreatePatchOutput> {
     try {
       const patch = this.patchRepository.create();
       patch.slug = uuid();
 
-      const part = new Part();
-      patch.parts.push(part);
+      for (let i = 0; i < numOfParts; i++) {
+        const part = new Part();
+        patch.parts.push(part);
+      }
 
-      console.log(JSON.stringify(patch));
-
-      const error = await validateOrReject(patch);
-
-      console.log(error);
+      await validateOrReject(patch);
 
       this.patchRepository.save(patch);
 
-      return true;
+      return {
+        ok: true,
+        patch,
+      };
     } catch (e) {
       const err: ValidationError[] = e;
-      console.error('catch', err[0].children[0]);
-      return false;
+      console.error(err[0]);
+      return {
+        ok: false,
+        error: err.toString(),
+      };
     }
   }
 }

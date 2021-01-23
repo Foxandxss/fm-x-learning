@@ -1,9 +1,10 @@
-import { Field } from '@nestjs/graphql';
+import { Field, ObjectType } from '@nestjs/graphql';
 import { ArrayMaxSize, ArrayMinSize, ValidateNested } from 'class-validator';
 import { CommonAlgorithm } from './common-algorithm.entity';
 import { CommonGeneral } from './common-general.entity';
 import { Operator } from './operator.entity';
 
+@ObjectType()
 export class Part {
   @Field(type => CommonGeneral)
   @ValidateNested()

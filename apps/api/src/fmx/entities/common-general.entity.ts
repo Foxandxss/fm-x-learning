@@ -1,4 +1,4 @@
-import { Field, Int, registerEnumType } from '@nestjs/graphql';
+import { Field, Int, ObjectType, registerEnumType } from '@nestjs/graphql';
 import { IsEnum, IsInt, IsString, Max, Min } from 'class-validator';
 import { MidiRange } from '../../common/decorators';
 import { OnOff } from '../../common/enums';
@@ -16,6 +16,7 @@ enum KeyAssign {
 registerEnumType(Polyphony, { name: 'Polyphony' });
 registerEnumType(KeyAssign, { name: 'KeyAssign' });
 
+@ObjectType()
 export class CommonGeneral {
   @Field(type => Int)
   @MidiRange()

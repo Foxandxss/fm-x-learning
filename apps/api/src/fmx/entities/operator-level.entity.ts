@@ -1,4 +1,4 @@
-import { Field, Int, registerEnumType } from '@nestjs/graphql';
+import { Field, Int, ObjectType, registerEnumType } from '@nestjs/graphql';
 import { IsEnum, IsString, Max, Min } from 'class-validator';
 import { EnvelopeField } from '../../common/decorators';
 
@@ -11,6 +11,7 @@ enum Curve {
 
 registerEnumType(Curve, { name: 'Curve' });
 
+@ObjectType()
 export class OperatorLevel {
   timeSection = new Time();
   levelSection = new Level();

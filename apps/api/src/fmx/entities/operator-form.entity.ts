@@ -1,4 +1,4 @@
-import { Field, Int, registerEnumType } from '@nestjs/graphql';
+import { Field, Int, ObjectType, registerEnumType } from '@nestjs/graphql';
 import { IsEnum, IsInt, Max, Min } from 'class-validator';
 import { EnvelopeField } from '../../common/decorators';
 import { OnOff } from '../../common/enums';
@@ -21,6 +21,7 @@ enum Spectral {
 registerEnumType(FreqMode, { name: 'FreqMode' });
 registerEnumType(Spectral, { name: 'Spectral' });
 
+@ObjectType()
 export class OperatorForm {
   timeSection = new Time();
   levelSection = new Level();
