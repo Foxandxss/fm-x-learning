@@ -13,7 +13,7 @@ const Navigation = styled.nav`
   div {
     display: grid;
     grid-template-rows: repeat(6, 1fr);
-    box-shadow: inset -20px 2px 35px -8px rgba(0, 0, 0, 0.75);
+    box-shadow: inset -4px -2px 20px -5px rgba(0, 0, 0, 0.75);
   }
 
   span {

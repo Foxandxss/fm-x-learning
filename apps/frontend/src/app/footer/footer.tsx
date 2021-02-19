@@ -28,6 +28,7 @@ const FooterStyles = styled.footer`
     );
 
     border-top: 2px solid black;
+    padding-bottom: 0.4rem;
   }
 
   .op-button {
@@ -37,7 +38,7 @@ const FooterStyles = styled.footer`
       top: 0;
       right: 0;
       width: 1px;
-      height: 85%;
+      height: 90%;
       background-color: rgba(55, 221, 237, 0.3);
     }
   }
