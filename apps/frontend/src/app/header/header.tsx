@@ -8,14 +8,25 @@ const HeaderStyle = styled.header`
     var(--header-background-2)
   );
   grid-area: header;
+  display: grid;
 
-  border-bottom: 1px solid var(--background-color);
+  h1 {
+    margin: 0.5rem 1rem;
+  }
+
+  .border {
+    background-color: var(--primary-color);
+    height: 7px;
+    border-top: 0.3px solid black;
+    border-bottom: 0.3px solid black;
+  }
 `;
 
 export function Header() {
   return (
     <HeaderStyle>
       <h1>FM-X Learning</h1>
+      <div className="border"></div>
     </HeaderStyle>
   );
 }

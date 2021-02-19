@@ -7,15 +7,28 @@ import { Header } from './header/header';
 
 const Main = styled.main`
   grid-area: main;
-  /* box-shadow: -14px 2px 28px -8px rgba(0, 0, 0, 0.75); */
+  box-shadow: -14px 2px 28px -8px rgba(0, 0, 0, 0.75);
+`;
+
+const MiddleSection = styled.div`
+  grid-area: middle;
+
+  display: grid;
+  grid-template-columns: min-content 1fr;
+  grid-template-areas: 'side main';
+
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
 `;
 
 export function App() {
   return (
     <AppStyles>
       <Header />
-      <LeftNav />
-      <Main>TBD</Main>
+      <MiddleSection>
+        <LeftNav />
+        <Main>TBD</Main>
+      </MiddleSection>
       <Footer />
     </AppStyles>
   );

@@ -3,11 +3,10 @@ import styled from '@emotion/styled';
 const AppStyles = styled.div`
   display: grid;
   grid-template-rows: max-content 1fr max-content;
-  grid-template-columns: min-content 1fr;
   grid-template-areas:
-    'header header'
-    'side main'
-    'footer footer';
+    'header'
+    'middle'
+    'footer';
   grid-row-gap: 1rem;
 
   width: 100rem;
