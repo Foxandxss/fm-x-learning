@@ -1,18 +1,23 @@
 import React from 'react';
 import { Footer } from './footer/footer';
 import { LeftNav } from './navigation/left-nav';
+import AppStyles from './app.styles';
+import styled from '@emotion/styled';
+import { Header } from './header/header';
+
+const Main = styled.main`
+  grid-area: main;
+  /* box-shadow: -14px 2px 28px -8px rgba(0, 0, 0, 0.75); */
+`;
 
 export function App() {
   return (
-    <div>
-      <div className="flex">
-        <div className="w-1/12">
-          <LeftNav />
-        </div>
-        <div className="w-11/12 bg-red-300">TBD</div>
-      </div>
+    <AppStyles>
+      <Header />
+      <LeftNav />
+      <Main>TBD</Main>
       <Footer />
-    </div>
+    </AppStyles>
   );
 }
 

@@ -21,10 +21,6 @@
               "apps/frontend/src/favicon.ico",
               "apps/frontend/src/assets"
             ],
-            "styles": [
-              "apps/frontend/src/styles.css",
-              "apps/frontend/src/app/tailwind.css"
-            ],
             "scripts": [],
             "webpackConfig": "@nrwl/react/plugins/webpack"
           },
