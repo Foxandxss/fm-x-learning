@@ -10,6 +10,7 @@ export const GlobalStyles = css`
     --screen-background-2: #a39685;
     --footer-background-1: #0a2627;
     --footer-background-2: #1b4738;
+    --label-color: #33373a;
   }
 
   *,
@@ -26,5 +27,11 @@ export const GlobalStyles = css`
     background-color: var(--background-color);
     font-family: --apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
       Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  }
+
+  #root {
+    display: flex;
+    place-content: center;
+    place-items: center;
   }
 `;

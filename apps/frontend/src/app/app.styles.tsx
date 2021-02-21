@@ -3,14 +3,15 @@ import styled from '@emotion/styled';
 const AppStyles = styled.div`
   display: grid;
   grid-template-rows: max-content 1fr max-content;
+  grid-template-columns: max-content;
   grid-template-areas:
     'header'
     'middle'
     'footer';
   grid-row-gap: 1rem;
 
-  width: 100rem;
-  margin: 0 auto;
+  /* width: 100%; */
+  /* margin: 0 auto; */
   margin-top: 5rem;
 
   background: linear-gradient(
@@ -19,9 +20,6 @@ const AppStyles = styled.div`
     var(--screen-background-2)
   );
   color: white;
-
-  /* temp styles */
-  min-height: 400px;
 `;
 
 export default AppStyles;
