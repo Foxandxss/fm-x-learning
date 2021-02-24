@@ -26,6 +26,10 @@ export interface CreatePatchInput {
   numOfParts?: number | null;
 }
 
+export interface PatchInput {
+  patchId: string;
+}
+
 //==============================================================
 // END Enums and Input Objects
 //==============================================================

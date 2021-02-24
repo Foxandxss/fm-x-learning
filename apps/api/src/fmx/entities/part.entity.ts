@@ -1,5 +1,6 @@
 import { Field, ObjectType } from '@nestjs/graphql';
 import { ArrayMaxSize, ArrayMinSize, ValidateNested } from 'class-validator';
+import { Column } from 'typeorm';
 import { CommonAlgorithm } from './common-algorithm.entity';
 import { CommonGeneral } from './common-general.entity';
 import { Operator } from './operator.entity';
@@ -7,14 +8,17 @@ import { Operator } from './operator.entity';
 @ObjectType()
 export class Part {
   @Field(type => CommonGeneral)
+  @Column()
   @ValidateNested()
   commonGeneral: CommonGeneral;
 
   @Field(type => CommonAlgorithm)
+  @Column()
   @ValidateNested()
   commonAlgorithm: CommonAlgorithm;
 
   @Field(type => Operator)
+  @Column()
   @ValidateNested({ each: true })
   @ArrayMinSize(8)
   @ArrayMaxSize(8)

@@ -1,6 +1,6 @@
 import { Field, ObjectType } from '@nestjs/graphql';
 import { IsString, ValidateNested } from 'class-validator';
-import { Entity, ObjectID, ObjectIdColumn } from 'typeorm';
+import { Column, Entity, ObjectID, ObjectIdColumn } from 'typeorm';
 import { Part } from './part.entity';
 
 @ObjectType()
@@ -10,10 +10,12 @@ export class Patch {
   id: ObjectID;
 
   @Field(type => String)
+  @Column()
   @IsString()
   slug: string;
 
   @Field(type => [Part])
+  @Column()
   @ValidateNested()
   parts: Part[] = [];
 }

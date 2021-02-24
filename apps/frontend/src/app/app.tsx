@@ -1,6 +1,6 @@
 import React from 'react';
 import { Footer } from './footer/footer';
-import { gql, useMutation } from '@apollo/client';
+import { gql, useMutation, useQuery } from '@apollo/client';
 import { LeftNav } from './navigation/left-nav';
 import AppStyles from './app.styles';
 import styled from '@emotion/styled';
@@ -10,6 +10,7 @@ import {
   createPatch,
   createPatchVariables,
 } from '../__generated__/createPatch';
+import { patch, patchVariables } from '../__generated__/patch';
 
 // To be moved to a routed component or similar.
 const Main = styled.main`
@@ -75,15 +76,60 @@ const CREATE_PATCH = gql`
   }
 `;
 
+const GET_PATCH = gql`
+  query patch($input: PatchInput!) {
+    patch(input: $input) {
+      ok
+      error
+      patch {
+        slug
+        parts {
+          commonGeneral {
+            volume
+            pan
+            dryLevel
+            varSend
+            revSend
+            polyphony
+            keyAssign
+            keyOnDlySync
+            delayLength
+            arpPlayOnly
+            randomPan
+            alternatePan
+            scalingPan
+            velocityLimitLower
+            velocityLimitUpper
+            noteLimitLower
+            noteLimitUpper
+            velocityOffset
+            velocityDepth
+          }
+        }
+      }
+    }
+  }
+`;
+
 export function App() {
-  const [createPatchMutation, { data }] = useMutation<
-    createPatch,
-    createPatchVariables
-  >(CREATE_PATCH, {
-    onCompleted: (data: createPatch) => {
-      console.log(data);
+  const [createPatchMutation] = useMutation<createPatch, createPatchVariables>(
+    CREATE_PATCH,
+    {
+      onCompleted: (data: createPatch) => {
+        console.log(data);
+      },
+    }
+  );
+
+  const { data, loading, error } = useQuery<patch, patchVariables>(GET_PATCH, {
+    variables: {
+      input: {
+        patchId: '603694c0c77591958c6e2208',
+      },
     },
   });
+
+  console.log(data);
 
   // console.log(data);
   // React.useEffect(() => {

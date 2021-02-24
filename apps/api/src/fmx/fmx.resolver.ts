@@ -1,5 +1,6 @@
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { CreatePatchInput, CreatePatchOutput } from './dtos/create-patch.dto';
+import { PatchInput, PatchOutput } from './dtos/patch.dto';
 import { Patch } from './entities/patch.entity';
 import { FmxService } from './fmx.service';
 
@@ -7,9 +8,9 @@ import { FmxService } from './fmx.service';
 export class PatchResolver {
   constructor(private fmxService: FmxService) {}
 
-  @Query(returns => Boolean)
-  me() {
-    return true;
+  @Query(returns => PatchOutput)
+  async patch(@Args('input') patchInput: PatchInput): Promise<PatchOutput> {
+    return await this.fmxService.findPatchById(patchInput);
   }
 
   @Mutation(returns => CreatePatchOutput)
