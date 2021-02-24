@@ -44,6 +44,7 @@
     "class-validator": "^0.13.1",
     "core-js": "^3.6.5",
     "document-register-element": "1.13.1",
+    "formik": "^2.2.6",
     "graphql": "^15.4.0",
     "graphql-tools": "^7.0.2",
     "mongodb": "^3.6.3",

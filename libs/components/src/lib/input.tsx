@@ -5,13 +5,13 @@ import styled from '@emotion/styled';
 const Wrapper = styled.div`
   display: grid;
   border: 1px solid black;
-  width: 8rem;
+  width: 10rem;
 
   label {
-    width: 7.8rem;
+    width: 100%;
     background-color: var(--label-color);
     padding: 1rem 0.5rem;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     font-weight: 500;
   }
 

@@ -22,7 +22,11 @@ const Main = styled.main`
 
   grid-template-columns: repeat(6, max-content);
   grid-template-rows: repeat(4, max-content);
-  grid-gap: 0.4rem; ;
+  grid-gap: 0.4rem;
+
+  .empty-space {
+    grid-area: 2 / 5 / 4 / 7;
+  }
 `;
 
 const MiddleSection = styled.div`
@@ -98,26 +102,27 @@ export function App() {
       <MiddleSection>
         <LeftNav />
         <Main>
-          <Input label="Volume" initialValue="100"></Input>
-          <Input label="Pan" initialValue="C"></Input>
-          <Input label="Pan" initialValue="C"></Input>
-          <Input label="Pan" initialValue="C"></Input>
-          <Input label="Pan" initialValue="C"></Input>
-          <Input label="Pan" initialValue="C"></Input>
-          <Input label="Pan" initialValue="C"></Input>
-          <Input label="Pan" initialValue="C"></Input>
-          <Input label="Pan" initialValue="C"></Input>
-          <Input label="Pan" initialValue="C"></Input>
-          <Input label="Pan" initialValue="C"></Input>
-          <Input label="Pan" initialValue="C"></Input>
-          <Input label="Pan" initialValue="C"></Input>
-          <Input label="Pan" initialValue="C"></Input>
-          <Input label="Pan" initialValue="C"></Input>
-          <Input label="Pan" initialValue="C"></Input>
-          <Input label="Pan" initialValue="C"></Input>
-          <Input label="Pan" initialValue="C"></Input>
-          <Input label="Pan" initialValue="C"></Input>
-          <Input label="Pan" initialValue="C"></Input>
+          <Input label="Volume" initialValue="100" />
+          <Input label="Pan" initialValue="C" />
+          <Input label="Dry Level" initialValue="127" />
+          <Input label="VarSend" initialValue="0" />
+          <Input label="RevSend" initialValue="12" />
+          <Input label="Part Output" initialValue="MainL&R" />
+          <Input label="Mono/Poly" initialValue="Poly" />
+          <Input label="Key Assign" initialValue="Multi" />
+          <Input label="KeyOnDly Sync" initialValue="Off" />
+          <Input label="Delay Length" initialValue="0" />
+          <div className="empty-space"></div>
+          <Input label="Arp Play Only" initialValue="Off" />
+          <Input label="Random Pan" initialValue="0" />
+          <Input label="Alternate Pan" initialValue="C" />
+          <Input label="Saling Pan" initialValue="+0" />
+          <Input label="Velocity Limit L" initialValue="1" />
+          <Input label="Velocity Limit U" initialValue="127" />
+          <Input label="Note Limit L" initialValue="C -2" />
+          <Input label="Note Limit U" initialValue="G 8" />
+          <Input label="Velocity Offset" initialValue="64" />
+          <Input label="Velocity Depth" initialValue="64" />
         </Main>
       </MiddleSection>
       <Footer />
