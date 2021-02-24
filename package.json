@@ -23,10 +23,12 @@
     "update": "nx migrate latest",
     "workspace-generator": "nx workspace-generator",
     "dep-graph": "nx dep-graph",
-    "help": "nx help"
+    "help": "nx help",
+    "apollo:codegen": "rimraf apps/frontend/src/__generated__ && apollo client:codegen apps/frontend/src/__generated__ --target=typescript --outputFlat"
   },
   "private": true,
   "dependencies": {
+    "@apollo/client": "^3.3.11",
     "@emotion/react": "11.0.0",
     "@emotion/styled": "11.0.0",
     "@hapi/joi": "^17.1.1",
@@ -36,6 +38,7 @@
     "@nestjs/graphql": "^7.9.5",
     "@nestjs/platform-express": "^7.0.0",
     "@nestjs/typeorm": "^7.1.5",
+    "apollo": "^2.32.5",
     "apollo-server-express": "^2.19.2",
     "class-transformer": "^0.3.2",
     "class-validator": "^0.13.1",

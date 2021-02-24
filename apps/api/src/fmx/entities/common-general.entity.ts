@@ -70,7 +70,7 @@ export class CommonGeneral {
   @Min(-64)
   @Max(63)
   @IsInt()
-  scanlingPan = 0;
+  scalingPan = 0;
 
   @Field(type => Int)
   @MidiRange({ min: 1 })
