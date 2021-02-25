@@ -1,5 +1,4 @@
 import React from 'react';
-import AutosizeInput from 'react-input-autosize';
 import styled from '@emotion/styled';
 
 const Wrapper = styled.div`
@@ -15,11 +14,10 @@ const Wrapper = styled.div`
     font-weight: 500;
   }
 
-  .autosize {
-    justify-self: center;
-  }
-
   input {
+    width: 100%;
+    text-align: center;
+    font-size: 1.8rem;
     border: none;
     background-color: transparent;
     color: white;
@@ -29,18 +27,15 @@ const Wrapper = styled.div`
 
 interface Props {
   label: string;
-  initialValue: string;
+  name: string;
+  register: () => void;
 }
 
-export const Input: React.FC<Props> = ({ label, initialValue = '0' }) => {
+export const Input: React.FC<Props> = ({ label, name, register }) => {
   return (
     <Wrapper>
       <label>{label}</label>
-      <AutosizeInput
-        className="autosize"
-        value={initialValue}
-        inputStyle={{ fontSize: 18 }}
-      />
+      <input name={name} ref={register} />
     </Wrapper>
   );
 };

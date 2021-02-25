@@ -11,6 +11,7 @@ import {
   createPatchVariables,
 } from '../__generated__/createPatch';
 import { patch, patchVariables } from '../__generated__/patch';
+import { useForm } from 'react-hook-form';
 
 // To be moved to a routed component or similar.
 const Main = styled.main`
@@ -19,14 +20,16 @@ const Main = styled.main`
 
   padding: 0.5rem;
 
-  display: grid;
+  form {
+    display: grid;
 
-  grid-template-columns: repeat(6, max-content);
-  grid-template-rows: repeat(4, max-content);
-  grid-gap: 0.4rem;
+    grid-template-columns: repeat(6, max-content);
+    grid-template-rows: repeat(4, max-content);
+    grid-gap: 0.4rem;
 
-  .empty-space {
-    grid-area: 2 / 5 / 4 / 7;
+    .empty-space {
+      grid-area: 2 / 5 / 4 / 7;
+    }
   }
 `;
 
@@ -129,7 +132,18 @@ export function App() {
     },
   });
 
+  const { getValues, register, reset } = useForm();
+
   console.log(data);
+
+  React.useEffect(() => {
+    if (!data) return;
+    const commonGeneral = data.patch.patch.parts[0].commonGeneral;
+    reset({
+      ...getValues(),
+      ...commonGeneral,
+    });
+  }, [data, getValues, reset]);
 
   // console.log(data);
   // React.useEffect(() => {
@@ -148,27 +162,69 @@ export function App() {
       <MiddleSection>
         <LeftNav />
         <Main>
-          <Input label="Volume" initialValue="100" />
-          <Input label="Pan" initialValue="C" />
-          <Input label="Dry Level" initialValue="127" />
-          <Input label="VarSend" initialValue="0" />
-          <Input label="RevSend" initialValue="12" />
-          <Input label="Part Output" initialValue="MainL&R" />
-          <Input label="Mono/Poly" initialValue="Poly" />
-          <Input label="Key Assign" initialValue="Multi" />
-          <Input label="KeyOnDly Sync" initialValue="Off" />
-          <Input label="Delay Length" initialValue="0" />
-          <div className="empty-space"></div>
-          <Input label="Arp Play Only" initialValue="Off" />
-          <Input label="Random Pan" initialValue="0" />
-          <Input label="Alternate Pan" initialValue="C" />
-          <Input label="Saling Pan" initialValue="+0" />
-          <Input label="Velocity Limit L" initialValue="1" />
-          <Input label="Velocity Limit U" initialValue="127" />
-          <Input label="Note Limit L" initialValue="C -2" />
-          <Input label="Note Limit U" initialValue="G 8" />
-          <Input label="Velocity Offset" initialValue="64" />
-          <Input label="Velocity Depth" initialValue="64" />
+          <form>
+            <Input label="Volume" name="volume" register={register} />
+            <Input label="Pan" name="pan" register={register} />
+            <Input label="Dry Level" name="dryLevel" register={register} />
+            <Input label="VarSend" name="varSend" register={register} />
+            <Input label="RevSend" name="revSend" register={register} />
+            <Input label="Part Output" name="" register={register} />
+            <Input label="Mono/Poly" name="polyphony" register={register} />
+            <Input label="Key Assign" name="keyAssign" register={register} />
+            <Input
+              label="KeyOnDly Sync"
+              name="keyOnDlySync"
+              register={register}
+            />
+            <Input
+              label="Delay Length"
+              name="delayLength"
+              register={register}
+            />
+            <div className="empty-space"></div>
+            <Input
+              label="Arp Play Only"
+              name="arpPlayOnly"
+              register={register}
+            />
+            <Input label="Random Pan" name="randomPan" register={register} />
+            <Input
+              label="Alternate Pan"
+              name="alternatePan"
+              register={register}
+            />
+            <Input label="Scaling Pan" name="scalingPan" register={register} />
+            <Input
+              label="Velocity Limit L"
+              name="velocityLimitLower"
+              register={register}
+            />
+            <Input
+              label="Velocity Limit U"
+              name="velocityLimitUpper"
+              register={register}
+            />
+            <Input
+              label="Note Limit L"
+              name="noteLimitLower"
+              register={register}
+            />
+            <Input
+              label="Note Limit U"
+              name="noteLimitUpper"
+              register={register}
+            />
+            <Input
+              label="Velocity Offset"
+              name="velocityOffset"
+              register={register}
+            />
+            <Input
+              label="Velocity Depth"
+              name="velocityDepth"
+              register={register}
+            />
+          </form>
         </Main>
       </MiddleSection>
       <Footer />
