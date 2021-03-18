@@ -1,11 +1,12 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Patch } from './entities/patch.entity';
-import { PatchResolver } from './fmx.resolver';
+import { FmxController } from './fmx.controller';
 import { FmxService } from './fmx.service';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Patch])],
-  providers: [FmxService, PatchResolver],
+  controllers: [FmxController],
+  providers: [FmxService],
 })
 export class FmxModule {}

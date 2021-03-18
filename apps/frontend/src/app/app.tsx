@@ -1,16 +1,10 @@
 import React from 'react';
 import { Footer } from './footer/footer';
-import { gql, useMutation, useQuery } from '@apollo/client';
 import { LeftNav } from './navigation/left-nav';
 import AppStyles from './app.styles';
 import styled from '@emotion/styled';
 import { Header } from './header/header';
 import { Input } from '@fm-x-learning/components';
-import {
-  createPatch,
-  createPatchVariables,
-} from '../__generated__/createPatch';
-import { patch, patchVariables } from '../__generated__/patch';
 import { useForm } from 'react-hook-form';
 
 // To be moved to a routed component or similar.
@@ -44,117 +38,17 @@ const MiddleSection = styled.div`
   border-bottom: 1px solid black;
 `;
 
-const CREATE_PATCH = gql`
-  mutation createPatch($input: CreatePatchInput!) {
-    createPatch(input: $input) {
-      ok
-      error
-      patch {
-        slug
-        parts {
-          commonGeneral {
-            volume
-            pan
-            dryLevel
-            varSend
-            revSend
-            polyphony
-            keyAssign
-            keyOnDlySync
-            delayLength
-            arpPlayOnly
-            randomPan
-            alternatePan
-            scalingPan
-            velocityLimitLower
-            velocityLimitUpper
-            noteLimitLower
-            noteLimitUpper
-            velocityOffset
-            velocityDepth
-          }
-        }
-      }
-    }
-  }
-`;
-
-const GET_PATCH = gql`
-  query patch($input: PatchInput!) {
-    patch(input: $input) {
-      ok
-      error
-      patch {
-        slug
-        parts {
-          commonGeneral {
-            volume
-            pan
-            dryLevel
-            varSend
-            revSend
-            polyphony
-            keyAssign
-            keyOnDlySync
-            delayLength
-            arpPlayOnly
-            randomPan
-            alternatePan
-            scalingPan
-            velocityLimitLower
-            velocityLimitUpper
-            noteLimitLower
-            noteLimitUpper
-            velocityOffset
-            velocityDepth
-          }
-        }
-      }
-    }
-  }
-`;
-
 export function App() {
-  const [createPatchMutation] = useMutation<createPatch, createPatchVariables>(
-    CREATE_PATCH,
-    {
-      onCompleted: (data: createPatch) => {
-        console.log(data);
-      },
-    }
-  );
-
-  const { data, loading, error } = useQuery<patch, patchVariables>(GET_PATCH, {
-    variables: {
-      input: {
-        patchId: '603694c0c77591958c6e2208',
-      },
-    },
-  });
-
   const { getValues, register, reset } = useForm();
 
-  console.log(data);
-
-  React.useEffect(() => {
-    if (!data) return;
-    const commonGeneral = data.patch.patch.parts[0].commonGeneral;
-    reset({
-      ...getValues(),
-      ...commonGeneral,
-    });
-  }, [data, getValues, reset]);
-
-  // console.log(data);
   // React.useEffect(() => {
-  //   createPatchMutation({
-  //     variables: {
-  //       input: {
-  //         numOfParts: 1,
-  //       },
-  //     },
+  //   if (!data) return;
+  //   const commonGeneral = data.patch.patch.parts[0].commonGeneral;
+  //   reset({
+  //     ...getValues(),
+  //     ...commonGeneral,
   //   });
-  // }, [createPatchMutation]);
+  // }, [data, getValues, reset]);
 
   return (
     <AppStyles>

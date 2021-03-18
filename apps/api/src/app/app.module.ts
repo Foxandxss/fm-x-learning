@@ -6,7 +6,6 @@ import { Patch } from '../fmx/entities/patch.entity';
 import { Part } from '../fmx/entities/part.entity';
 import { CommonGeneral } from '../fmx/entities/common-general.entity';
 import { FmxModule } from '../fmx/fmx.module';
-import { GraphQLModule } from '@nestjs/graphql';
 
 @Module({
   imports: [
@@ -29,9 +28,6 @@ import { GraphQLModule } from '@nestjs/graphql';
       logging:
         process.env.NODE_ENV !== 'prod' && process.env.NODE_ENV !== 'test',
       entities: [Patch, Part, CommonGeneral],
-    }),
-    GraphQLModule.forRoot({
-      autoSchemaFile: true,
     }),
     FmxModule,
   ],
