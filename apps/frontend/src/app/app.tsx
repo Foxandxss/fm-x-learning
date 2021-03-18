@@ -5,6 +5,7 @@ import AppStyles from './app.styles';
 import styled from '@emotion/styled';
 import { Header } from './header/header';
 import { Input } from '@fm-x-learning/components';
+import { usePatch } from '@fm-x-learning/hooks';
 import { useForm } from 'react-hook-form';
 
 // To be moved to a routed component or similar.
@@ -40,6 +41,7 @@ const MiddleSection = styled.div`
 
 export function App() {
   const { getValues, register, reset } = useForm();
+  const { data } = usePatch('603a83e4b9456409f4341068');
 
   // React.useEffect(() => {
   //   if (!data) return;
@@ -49,6 +51,16 @@ export function App() {
   //     ...commonGeneral,
   //   });
   // }, [data, getValues, reset]);
+
+  React.useEffect(() => {
+    if (data) {
+      console.log('onReset');
+      reset({
+        ...getValues(),
+        ...data.parts[0].commonGeneral,
+      });
+    }
+  }, [data, getValues, reset]);
 
   return (
     <AppStyles>

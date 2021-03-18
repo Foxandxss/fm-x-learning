@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@fm-x-learning/components": ["libs/components/src/index.ts"]
+      "@fm-x-learning/components": ["libs/components/src/index.ts"],
+      "@fm-x-learning/hooks": ["libs/hooks/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

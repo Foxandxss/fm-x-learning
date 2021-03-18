@@ -3,5 +3,6 @@ module.exports = {
     '<rootDir>/apps/frontend',
     '<rootDir>/apps/api',
     '<rootDir>/libs/components',
+    '<rootDir>/libs/hooks',
   ],
 };
