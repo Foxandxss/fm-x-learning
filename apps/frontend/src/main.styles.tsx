@@ -30,8 +30,6 @@ export const GlobalStyles = css`
   }
 
   #root {
-    display: flex;
-    place-content: center;
-    place-items: center;
+    height: 100vh;
   }
 `;

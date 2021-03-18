@@ -10,7 +10,7 @@ import { useForm } from 'react-hook-form';
 import Wrapper from './screen.styles';
 
 // To be moved to a routed component or similar.
-const Main = styled.main`
+const Main = styled.div`
   grid-area: main;
   box-shadow: -14px 2px 28px -8px rgba(0, 0, 0, 0.75);
 
@@ -29,7 +29,7 @@ const Main = styled.main`
   }
 `;
 
-const MiddleSection = styled.div`
+const MiddleSection = styled.section`
   grid-area: middle;
 
   display: grid;
@@ -134,7 +134,7 @@ export function Screen() {
           </form>
         </Main>
       </MiddleSection>
-      <Footer />
+      <Footer aria-label="operators" />
     </Wrapper>
   );
 }

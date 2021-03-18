@@ -1,6 +1,8 @@
 import styled from '@emotion/styled';
 
 const Wrapper = styled.main`
+  justify-self: center;
+  align-self: center;
   display: grid;
   grid-template-rows: max-content 1fr max-content;
   grid-template-columns: max-content;
@@ -10,8 +12,6 @@ const Wrapper = styled.main`
     'footer';
   grid-row-gap: 1rem;
 
-  /* width: 100%; */
-  /* margin: 0 auto; */
   margin-top: 5rem;
 
   background: linear-gradient(

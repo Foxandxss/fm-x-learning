@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import React from 'react';
 
-const Wrapper = styled.footer`
+const Wrapper = styled.section`
   color: var(--primary-color);
 
   grid-area: footer;

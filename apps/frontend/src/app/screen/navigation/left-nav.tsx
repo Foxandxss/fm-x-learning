@@ -28,7 +28,7 @@ const Wrapper = styled.nav`
 
 export function LeftNav() {
   return (
-    <Wrapper>
+    <Wrapper role="navigation">
       <div className="left-menu">
         <span>Part Settings</span>
         <span>Pitch / Filter</span>
