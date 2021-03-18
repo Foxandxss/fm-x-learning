@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import React from 'react';
 
-const Navigation = styled.nav`
+const Wrapper = styled.nav`
   grid-area: side;
 
   display: grid;
@@ -28,7 +28,7 @@ const Navigation = styled.nav`
 
 export function LeftNav() {
   return (
-    <Navigation>
+    <Wrapper>
       <div className="left-menu">
         <span>Part Settings</span>
         <span>Pitch / Filter</span>
@@ -43,6 +43,6 @@ export function LeftNav() {
         <span>Zone Settings</span>
         <span>Zone Transmit</span>
       </div>
-    </Navigation>
+    </Wrapper>
   );
 }

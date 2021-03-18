@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import React from 'react';
 
-const FooterStyles = styled.footer`
+const Wrapper = styled.footer`
   color: var(--primary-color);
 
   grid-area: footer;
@@ -67,7 +67,7 @@ const FooterStyles = styled.footer`
 
 export function Footer() {
   return (
-    <FooterStyles>
+    <Wrapper>
       <div className="big-buttons">
         <span className="big">Part 1</span>
         <span className="big">Common</span>
@@ -83,6 +83,6 @@ export function Footer() {
         <span className="op-button">OP7</span>
         <span className="op-button">OP8</span>
       </div>
-    </FooterStyles>
+    </Wrapper>
   );
 }

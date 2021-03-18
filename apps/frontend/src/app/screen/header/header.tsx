@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 
-const HeaderStyle = styled.header`
+const Wrapper = styled.header`
   background: linear-gradient(
     to right top,
     var(--header-background-1),
@@ -24,9 +24,9 @@ const HeaderStyle = styled.header`
 
 export function Header() {
   return (
-    <HeaderStyle>
+    <Wrapper>
       <h1>FM-X Learning</h1>
       <div className="border"></div>
-    </HeaderStyle>
+    </Wrapper>
   );
 }
