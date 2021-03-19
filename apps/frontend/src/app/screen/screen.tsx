@@ -41,17 +41,13 @@ const MiddleSection = styled.section`
 `;
 
 export function Screen() {
-  const { getValues, register, reset } = useForm();
+  const {
+    getValues,
+    register,
+    reset,
+    formState: { isDirty },
+  } = useForm();
   const { data } = usePatch('603a83e4b9456409f4341068');
-
-  // React.useEffect(() => {
-  //   if (!data) return;
-  //   const commonGeneral = data.patch.patch.parts[0].commonGeneral;
-  //   reset({
-  //     ...getValues(),
-  //     ...commonGeneral,
-  //   });
-  // }, [data, getValues, reset]);
 
   React.useEffect(() => {
     if (data) {
@@ -62,6 +58,10 @@ export function Screen() {
       });
     }
   }, [data, getValues, reset]);
+
+  React.useEffect(() => {
+    console.log(isDirty);
+  }, [isDirty]);
 
   return (
     <Wrapper>
@@ -75,7 +75,12 @@ export function Screen() {
             <Input label="Dry Level" name="dryLevel" register={register} />
             <Input label="VarSend" name="varSend" register={register} />
             <Input label="RevSend" name="revSend" register={register} />
-            <Input label="Part Output" name="" register={register} />
+            <Input
+              label="Part Output"
+              name="partOutput"
+              register={register}
+              disabled
+            />
             <Input label="Mono/Poly" name="polyphony" register={register} />
             <Input label="Key Assign" name="keyAssign" register={register} />
             <Input
@@ -88,7 +93,7 @@ export function Screen() {
               name="delayLength"
               register={register}
             />
-            <div className="empty-space"></div>
+            <div aria-hidden="true" className="empty-space"></div>
             <Input
               label="Arp Play Only"
               name="arpPlayOnly"

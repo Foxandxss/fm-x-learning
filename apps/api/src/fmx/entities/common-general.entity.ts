@@ -35,6 +35,10 @@ export class CommonGeneral {
   revSend = 12;
 
   @Column()
+  @IsString()
+  partOutput = 'MainL&R';
+
+  @Column()
   @IsEnum(Polyphony)
   polyphony = Polyphony.Poly;
 

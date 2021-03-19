@@ -7,5 +7,9 @@ const Wrapper = styled.section`
 `;
 
 export function OptionsAside() {
-  return <Wrapper aria-label="options">Aside</Wrapper>;
+  return (
+    <Wrapper aria-label="options">
+      <button>Save</button>
+    </Wrapper>
+  );
 }

@@ -25,17 +25,17 @@ const Wrapper = styled.div`
   }
 `;
 
-interface Props {
+interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
   label: string;
   name: string;
   register: () => void;
 }
 
-export const Input: React.FC<Props> = ({ label, name, register }) => {
+export const Input: React.FC<Props> = ({ label, name, register, ...props }) => {
   return (
     <Wrapper>
-      <label>{label}</label>
-      <input name={name} ref={register} />
+      <label htmlFor={name}>{label}</label>
+      <input id={name} name={name} ref={register} {...props} />
     </Wrapper>
   );
 };
