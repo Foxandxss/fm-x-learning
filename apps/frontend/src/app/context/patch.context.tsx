@@ -1,9 +1,11 @@
 import React from 'react';
-import { client } from '@fm-x-learning/front-utils';
+import { client, queryClient } from '@fm-x-learning/front-utils';
 import { useAsync } from '@fm-x-learning/hooks';
 
 async function bootstrapAppData() {
-  return await client('createPatch');
+  const patch = await client(''); // Default fmx route
+  queryClient.setQueryData('patch', patch);
+  return patch;
 }
 
 const PatchContext = React.createContext<{ patch: any } | undefined>(undefined);
@@ -27,13 +29,13 @@ const PatchProvider = ({ children }) => {
 
   const value = React.useMemo(() => ({ patch }), [patch]);
 
-  // if (isLoading || isIdle) {
-  //   return <div>Loading or idle</div>;
-  // }
+  if (isLoading || isIdle) {
+    return <div>Loading or idle</div>;
+  }
 
-  // if (isError) {
-  //   return <div>Error {error}</div>;
-  // }
+  if (isError) {
+    return <div>Error {error}</div>;
+  }
 
   if (isSuccess) {
     return (

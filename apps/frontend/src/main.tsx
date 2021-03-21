@@ -1,13 +1,12 @@
 import { Global } from '@emotion/react';
+import { queryClient } from '@fm-x-learning/front-utils';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { QueryClient, QueryClientProvider } from 'react-query';
+import { QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 
 import App from './app/app';
 import { GlobalStyles } from './main.styles';
-
-const queryClient = new QueryClient();
 
 ReactDOM.render(
   <React.StrictMode>

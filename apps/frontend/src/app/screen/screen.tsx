@@ -5,9 +5,9 @@ import styled from '@emotion/styled';
 import { Header } from './header/header';
 import { Input } from '@fm-x-learning/components';
 import { useForm } from 'react-hook-form';
-import { usePatch } from '@fm-x-learning/context';
 
 import Wrapper from './screen.styles';
+import { usePatch } from '../context/patch.context';
 
 // To be moved to a routed component or similar.
 const Main = styled.div`
@@ -42,18 +42,18 @@ const MiddleSection = styled.section`
 
 export function Screen() {
   const { getValues, register, reset } = useForm();
-  const { patch: data } = usePatch();
+  const { patch } = usePatch();
 
   React.useEffect(() => {
-    console.log(data);
-    if (data) {
+    console.log(patch);
+    if (patch) {
       console.log('onReset');
       reset({
         ...getValues(),
-        ...data.parts[0].commonGeneral,
+        ...patch.parts[0].commonGeneral,
       });
     }
-  }, [data, getValues, reset]);
+  }, [patch, getValues, reset]);
 
   return (
     <Wrapper>

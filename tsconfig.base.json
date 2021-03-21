@@ -18,7 +18,6 @@
     "paths": {
       "@fm-x-learning/components": ["libs/components/src/index.ts"],
       "@fm-x-learning/hooks": ["libs/hooks/src/index.ts"],
-      "@fm-x-learning/context": ["libs/context/src/index.ts"],
       "@fm-x-learning/front-utils": ["libs/front-utils/src/index.ts"]
     }
   },
