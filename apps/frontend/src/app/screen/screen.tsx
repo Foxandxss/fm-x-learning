@@ -4,8 +4,8 @@ import { LeftNav } from './navigation/left-nav';
 import styled from '@emotion/styled';
 import { Header } from './header/header';
 import { Input } from '@fm-x-learning/components';
-import { usePatch } from '@fm-x-learning/hooks';
 import { useForm } from 'react-hook-form';
+import { usePatch } from '@fm-x-learning/context';
 
 import Wrapper from './screen.styles';
 
@@ -41,15 +41,11 @@ const MiddleSection = styled.section`
 `;
 
 export function Screen() {
-  const {
-    getValues,
-    register,
-    reset,
-    formState: { isDirty },
-  } = useForm();
-  const { data } = usePatch('603a83e4b9456409f4341068');
+  const { getValues, register, reset } = useForm();
+  const { patch: data } = usePatch();
 
   React.useEffect(() => {
+    console.log(data);
     if (data) {
       console.log('onReset');
       reset({
@@ -58,10 +54,6 @@ export function Screen() {
       });
     }
   }, [data, getValues, reset]);
-
-  React.useEffect(() => {
-    console.log(isDirty);
-  }, [isDirty]);
 
   return (
     <Wrapper>

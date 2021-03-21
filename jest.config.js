@@ -4,5 +4,7 @@ module.exports = {
     '<rootDir>/apps/api',
     '<rootDir>/libs/components',
     '<rootDir>/libs/hooks',
+    '<rootDir>/libs/context',
+    '<rootDir>/libs/front-utils',
   ],
 };

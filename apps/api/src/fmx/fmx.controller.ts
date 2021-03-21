@@ -17,6 +17,11 @@ export class FmxController {
     return await this.fmxService.createPatch(numOfParts);
   }
 
+  @Get()
+  async createWithoutSave() {
+    return await this.fmxService.createPatch(1); // for now
+  }
+
   @Get(':id')
   async findOne(@Param('id') id: string) {
     const patch = await this.fmxService.findPatchById(id);

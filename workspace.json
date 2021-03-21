@@ -217,6 +217,56 @@
           }
         }
       }
+    },
+    "context": {
+      "root": "libs/context",
+      "sourceRoot": "libs/context/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/context/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/libs/context"
+          ],
+          "options": {
+            "jestConfig": "libs/context/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "front-utils": {
+      "root": "libs/front-utils",
+      "sourceRoot": "libs/front-utils/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/front-utils/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/libs/front-utils"
+          ],
+          "options": {
+            "jestConfig": "libs/front-utils/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {

@@ -20,6 +20,8 @@
     "frontend-e2e": { "tags": [], "implicitDependencies": ["frontend"] },
     "api": { "tags": [] },
     "components": { "tags": [] },
-    "hooks": { "tags": [] }
+    "hooks": { "tags": [] },
+    "context": { "tags": [] },
+    "front-utils": { "tags": [] }
   }
 }
