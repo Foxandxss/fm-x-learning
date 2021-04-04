@@ -41,11 +41,10 @@ const MiddleSection = styled.section`
 `;
 
 export function Screen() {
-  const { getValues, register, reset } = useForm();
+  const { getValues, register, reset, handleSubmit } = useForm();
   const { patch } = usePatch();
 
   React.useEffect(() => {
-    console.log(patch);
     if (patch) {
       console.log('onReset');
       reset({
@@ -55,13 +54,22 @@ export function Screen() {
     }
   }, [patch, getValues, reset]);
 
+  React.useEffect(() => {
+    // console.log(patch);
+  }, [patch]);
+
+  const onSubmit = data => {
+    console.log(data);
+    console.log(patch);
+  };
+
   return (
     <Wrapper>
       <Header />
       <MiddleSection>
         <LeftNav />
         <Main>
-          <form>
+          <form onSubmit={handleSubmit(onSubmit)}>
             <Input label="Volume" name="volume" register={register} />
             <Input label="Pan" name="pan" register={register} />
             <Input label="Dry Level" name="dryLevel" register={register} />
@@ -128,6 +136,7 @@ export function Screen() {
               name="velocityDepth"
               register={register}
             />
+            <button type="submit">Submit</button>
           </form>
         </Main>
       </MiddleSection>
